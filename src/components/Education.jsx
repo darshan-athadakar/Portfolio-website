@@ -11,7 +11,7 @@ const Education = () => {
           <p className="text-cyan-400 mb-1">{education.institution}</p>
           <p className="text-slate-400 mb-3">{education.location} • {education.duration}</p>
           <div>
-            <p className="text-sm font-semibold text-slate-400 mb-2">Relevant Coursework:</p>
+            <p className="text-sm font-semibold text-slate-400 mb-2">Coursework:</p>
             <div className="flex flex-wrap gap-2">
               {education.coursework.map((course, index) => (
                 <span

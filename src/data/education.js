@@ -3,5 +3,5 @@ export const education = {
     institution: "Jain College of Engineering & Technology",
     location: "Hubballi",
     duration: "May 2020 - May 2024",
-    coursework: ["Object Oriented Programming", "Database Management System", "Data Structure and Algorithm"]
+    coursework: ["Data Structure and Algorithm", "Object Oriented Programming", "Operating System", "Database Management System", "Computer Networking"]
 };

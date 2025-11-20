@@ -1,6 +1,6 @@
 export const experiences = [
     {
-        role: "Java Full Stack Developer (Backend-Focused)",
+        role: "Associate Software Developer",
         company: "AIROBOSOFT Products and Services",
         location: "Bangalore, Karnataka",
         duration: "Oct 2024 - Present",

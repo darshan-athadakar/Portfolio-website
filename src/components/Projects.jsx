@@ -4,9 +4,17 @@ import { projects } from '../data/projects';
 
 const Projects = () => {
   const [expandedProjects, setExpandedProjects] = useState({});
+  const [expandedTechStacks, setExpandedTechStacks] = useState({});
 
   const toggleExpand = (index) => {
     setExpandedProjects(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  const toggleTechStack = (index) => {
+    setExpandedTechStacks(prev => ({
       ...prev,
       [index]: !prev[index]
     }));
@@ -24,8 +32,11 @@ const Projects = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => {
             const isExpanded = expandedProjects[index];
+            const isTechStackExpanded = expandedTechStacks[index];
             const displayFeatures = isExpanded ? project.features : project.features.slice(0, 4);
+            const displayTechStack = isTechStackExpanded ? project.techStack : project.techStack.slice(0, 8);
             const hasMoreFeatures = project.features.length > 4;
+            const hasMoreTech = project.techStack.length > 8;
 
             return (
               <div
@@ -54,7 +65,7 @@ const Projects = () => {
                   <div className="mb-4">
                     <h4 className="text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wide">Tech Stack</h4>
                     <div className="flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 8).map((tech, techIndex) => (
+                      {displayTechStack.map((tech, techIndex) => (
                         <span
                           key={techIndex}
                           className="px-2 py-1 bg-slate-800 text-blue-400 rounded text-xs border border-slate-700"
@@ -62,12 +73,25 @@ const Projects = () => {
                           {tech}
                         </span>
                       ))}
-                      {project.techStack.length > 8 && (
-                        <span className="px-2 py-1 bg-slate-800 text-slate-400 rounded text-xs border border-slate-700">
-                          +{project.techStack.length - 8} more
-                        </span>
-                      )}
                     </div>
+                    {hasMoreTech && (
+                      <button
+                        onClick={() => toggleTechStack(index)}
+                        className="mt-2 text-blue-400 hover:text-cyan-400 transition-colors text-xs font-semibold flex items-center"
+                      >
+                        {isTechStackExpanded ? (
+                          <>
+                            <FaChevronUp className="mr-1" />
+                            Show Less
+                          </>
+                        ) : (
+                          <>
+                            <FaChevronDown className="mr-1" />
+                            Show All {project.techStack.length} Technologies
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
 
                   {/* Features */}
